@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2</title>
+</head>
+<body>
+    
+</body>
+<script>
+let array = [];
+for (let i = 0; i < 6; i++) {
+    array.push(Math.random() * 100);
+}
+
+    let minValue = Infinity;
+let maxValue = -Infinity;
+
+for (const key in array) {
+    const value = array[key];
+    maxValue = Math.max(maxValue, value);
+    minValue = Math.min(minValue, value);
+}
+
+console.log("Array:", array);
+console.log("Gtln:", maxValue);
+console.log("Gtnn:", minValue);
+
+</script>
+<br>
+<script>
+
+    let minValue2 = Infinity;
+let maxValue2 = -Infinity;
+
+for (const value of array) {
+    maxValue2 = Math.max(maxValue2, value);
+    minValue2 = Math.min(minValue2, value);
+}
+
+console.log("Array:", array);
+console.log("Gtln:", maxValue2);
+console.log("Gtnn:", minValue2);
+
+</script>
+</html>
