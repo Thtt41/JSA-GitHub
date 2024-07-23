@@ -1,26 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài 1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ex.1</title>
 </head>
 <body>
-    
+  
 </body>
 <script>
-    const array = ['0', '1', '2'];
+localStorage.setItem('users', JSON.stringify([{ name: 'Henry' }, { name: 'Alice' }]));
 
-for (const key in array) {
-  console.log(key);
+function updateUser(oldName, newName) {
+  const users = JSON.parse(localStorage.getItem('users'));
+  
+  if (users) {
+    const updatedUsers = users.map(user => user.name === oldName ? { ...user, name: newName } : user);
+    
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+  }
 }
 
-</script>
-<br>
-<script>
-    const array2 = ['Apple', 'Banana', 'Oreo'];
+updateUser('Henry', 'Alice');
 
-for (const element of array2) {
-  console.log(element);}
+console.log(JSON.parse(localStorage.getItem('users')));
+
+function deleteUser(name) {
+  const users = JSON.parse(localStorage.getItem('users'));
+  
+  if (users) {
+    const updatedUsers = users.filter(user => user.name !== name);
+    
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+  }
+}
+
+deleteUser('Henry');
+
+console.log(JSON.parse(localStorage.getItem('users')));
+
+localStorage.setItem('users', JSON.stringify([{ name: 'Phuoc' }, { name: 'Alice' }]));
+
+function deleteUserDataSet() {
+  localStorage.removeItem('users');
+}
+
+deleteUserDataSet();
+
+console.log(localStorage.getItem('users'));
+
+
 </script>
 </html>
